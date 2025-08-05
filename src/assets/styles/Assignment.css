@@ -1,0 +1,700 @@
+ .assignment .container{
+    max-width: 1920px;
+    width: 100%;
+    padding-left: 4.16%;
+    padding-right: 4.16%;
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+.assignment .section-1{
+    background-color: rgba(7, 43, 242, 1);
+    padding: 40px;
+}
+
+.assignment .section-1 img{
+max-width: 143px;
+width: 100%;
+height: auto;
+object-fit: cover;
+}
+
+.assignment .section-1 .first{
+    font-size: clamp(1.125rem, -0.125rem + 2.6042vw, 3rem);
+}
+
+.assignment .section-1 .second{
+font-size: clamp(0.5rem, -0.1667rem + 1.3889vw, 1.5rem);
+}
+
+.assignment .section-2{
+padding-top: 25px;
+padding-bottom: 25px;
+}
+
+.assignment .section-2 h4{
+    font-size: clamp(1rem, -0.0833rem + 2.2569vw, 2.625rem);
+}
+
+.assignment .section-2 .main{
+max-width: 815px;
+height: auto;
+width: 100%;
+object-fit: cover;
+border-radius: 20px;
+}
+
+.assignment .line {
+  height: 1px;
+  background:rgba(232,232,232);
+  width: 100%;
+  margin: 30px 0;
+}
+
+.assignment .section-2 button{
+padding:15px  50px;
+color: white;
+  font-size: clamp(0.375rem, -0.0417rem + 0.8681vw, 1rem);
+
+}
+
+.assignment .section-2  .btn-1{
+background-color:rgba(0, 0, 0, 1) ;
+}
+
+.assignment .section-2  .btn-2{
+background-color:rgba(7, 43, 242, 1) ;
+}
+
+.assignment .section-2  .play{
+width: 20px;
+height: 20px;
+margin-left: 10px;
+}
+
+.assignment .logo-overlay {
+  width: 57px;
+  height: 57px;
+  margin: 35px;
+}
+
+.assignment .section-2  h6{
+font-size: clamp(1rem, 0.6667rem + 0.6944vw, 1.5rem);
+color: rgba(0, 0, 0, 1);
+margin-bottom: 30px;
+}
+
+.assignment .section-2  .first{
+font-size: clamp(0.5rem, 0.0833rem + 0.8681vw, 1.125rem);
+color: rgba(112, 112, 112, 1);
+margin-bottom: 30px;
+
+}
+
+.assignment .section-2  .timeline{
+width: 100%;
+height: auto;
+max-width: 40px;
+}
+
+.assignment .section-2  .second{
+font-size: clamp(0.5rem, -0.1667rem + 1.3889vw, 1.5rem);
+margin-bottom: 30px;
+
+}
+
+
+.assignment .section-2  .second1{margin-left: 6%;
+}
+
+.assignment .section-2  li{
+font-size: clamp(0.5rem, 0.0833rem + 0.8681vw, 1.125rem);
+color: rgba(112, 112, 112, 1);
+margin-bottom: 20px;
+
+}
+
+.assignment .section-3 {
+padding-top: 25px;
+padding-bottom: 25px;
+}
+
+.assignment .section-3 h4{
+    font-size: clamp(1rem, -0.0833rem + 2.2569vw, 2.625rem);
+}
+
+
+.assignment .custom-table {
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 20px;
+  overflow: hidden;
+    border: 1.65px solid rgba(232, 232, 232, 1);
+}
+
+.assignment .custom-table tbody tr:nth-child(even) td  {
+  background-color: rgba(244, 244, 244, 1) !important;
+}
+
+
+.assignment .custom-table thead th {
+  border-bottom: 1.65px solid rgba(232, 232, 232, 1);
+}
+
+
+.custom-table th,
+.custom-table td {
+  padding: 20px;
+  vertical-align: middle;
+  border: none;
+font-size: clamp(0.75rem, 0.25rem + 1.0417vw, 1.5rem);
+}
+
+
+.assignment .status-badge {
+  font-size: clamp(0.5rem, 0rem + 1.0417vw, 1.25rem);
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-weight: 500;
+  display: inline-block;
+}
+
+.assignment .bg-light-success {
+  background-color: rgba(233, 255, 239, 1);
+  color: rgba(64, 146, 97, 1);
+  padding: 10px 20px;
+}
+
+.assignment .bg-light-warning {
+  background-color: rgba(255, 250, 233, 1);
+  color: rgba(227, 153, 49, 1);
+    padding: 10px 20px; 
+}
+
+.assignment .section-3  .circle{
+height:24px;
+width: 24px;
+}
+
+.assignment .section-3 .play-button {
+height: 22px;
+width: 22px;
+
+}
+
+.assignment .section-3  button{
+  font-size: clamp(0.375rem, -0.0417rem + 0.8681vw, 1rem);
+
+}
+
+
+.assignment .section-3  .btn-1{
+background-color: rgba(0, 0, 0, 1);
+color: white;
+height: 40px;
+width: 110px;
+}
+
+.assignment .section-3  .btn-2{
+background-color:rgba(7, 43, 242, 1);
+color: white;
+height: 40px;
+width: 110px;
+}
+
+.assignment .section-4{
+padding-top: 25px;
+}
+
+.assignment .section-4 h4{
+    font-size: clamp(1rem, -0.0833rem + 2.2569vw, 2.625rem);
+}
+
+.assignment .section-4 .box{
+background-color: rgba(244, 244, 244, 1);
+border-radius: 20px;
+border: 1 px solid rgba(232, 232, 232, 1);
+}
+
+.assignment .section-4 h6{
+font-size: clamp(0.75rem, 0.3333rem + 0.8681vw, 1.375rem);
+color: rgba(0, 0, 0, 1);
+}
+
+.assignment .section-4 p{
+font-size: clamp(0.75rem, 0.3333rem + 0.8681vw, 1.375rem);
+color: rgba(112, 112, 112, 1);
+}
+
+@media (max-width:1920px){  
+
+.assignment .section-1{
+    padding: 30px;
+}
+
+.assignment .section-1 img{
+max-width: 120px;
+}
+
+.assignment .section-2  h6{
+margin-bottom: 25px;
+}
+
+.assignment .section-2  .first{
+margin-bottom: 25px;
+
+}
+
+.assignment .section-2  .timeline{
+max-width: 30px;
+}
+
+.assignment .section-2  .second{
+margin-bottom: 25px;
+
+}
+
+
+.assignment .section-2  .second1{
+  margin-left: 6%;
+}
+
+.assignment .section-2  li{
+margin-bottom: 16px;
+
+}
+
+
+.assignment .status-badge {
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-weight: 500;
+  display: inline-block;
+}
+
+.assignment .section-3  .circle{
+height:20px;
+width: 20px;
+}
+
+.assignment .section-3 .play-button {
+height: 18px;
+width: 18px;
+}
+
+.assignment .section-3  .btn-1{
+height: 35px;
+width: 110px;
+}
+
+.assignment .section-3  .btn-2{
+height: 35px;
+width: 110px;
+}
+
+}
+
+@media (max-width:1600px){  
+
+   .assignment .container{
+    padding-top: 45px;
+    padding-bottom: 45px;
+}
+
+.assignment .section-1{
+    padding: 30px;
+}
+
+.assignment .section-1 img{
+max-width: 110px;
+}
+
+.assignment .line {
+  margin: 25px 0;
+}
+
+.assignment .section-2 button{
+padding:12px  40px;
+}
+
+.assignment .section-2  .play{
+width: 18px;
+height: 18px;
+margin-left: 10px;
+}
+
+.assignment .logo-overlay {
+  width: 50px;
+  height: 50px;
+  margin: 30px;
+}
+
+.assignment .section-2  h6{
+margin-bottom: 22px;
+}
+
+.assignment .section-2  .first{
+margin-bottom: 22px;
+
+}
+
+.assignment .section-2  .timeline{
+max-width: 25px;
+}
+
+.assignment .section-2  .second{
+margin-bottom: 22px;
+
+}
+
+.assignment .section-2  li{
+margin-bottom: 14px;
+
+}
+
+
+.assignment .bg-light-success {
+  padding: 8px 18px;
+}
+
+.assignment .bg-light-warning {
+  padding: 8px 18px;
+}
+
+.assignment .section-3  .circle{
+height:18px;
+width: 18px;
+}
+
+.assignment .section-3 .play-button {
+height: 16px;
+width: 16px;
+}
+
+
+.assignment .section-3  .btn-1{
+height: 35px;
+width: 110px;
+}
+
+.assignment .section-3  .btn-2{
+height: 35px;
+width: 110px;
+}
+
+}
+
+@media (max-width:1400px){  
+  
+   .assignment .container{
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.assignment .section-2{
+padding-top: 20px;
+padding-bottom: 20px;
+}
+
+.assignment .section-3{
+padding-top: 20px;
+padding-bottom: 20px;
+}
+.assignment .section-4{
+padding-top: 20px;
+}
+
+.assignment .section-1{
+    padding: 25px;
+}
+
+.assignment .section-1 img{
+max-width: 95px;
+}
+
+.assignment .line {
+  margin: 22px 0;
+}
+
+.assignment .section-2 button{
+padding:10px  30px;
+}
+
+.assignment .section-2  .play{
+width: 14px;
+height: 14px;
+margin-left: 6px;
+}
+
+.assignment .logo-overlay {
+  width: 45px;
+  height: 45px;
+  margin: 25px;
+}
+
+.assignment .section-2  h6{
+margin-bottom: 18px;
+}
+
+.assignment .section-2  .first{
+margin-bottom: 18px;
+
+}
+
+.assignment .section-2  .timeline{
+max-width: 22px;
+}
+
+.assignment .section-2  .second{
+margin-bottom: 18px;
+
+}
+
+.assignment .section-2  li{
+margin-bottom: 10px;
+
+}
+
+
+.assignment .bg-light-success {
+  padding: 6px 16px;
+}
+
+.assignment .bg-light-warning {
+  padding: 6px 16px;
+}
+
+.assignment .section-3  .circle{
+height:16px;
+width: 16px;
+}
+
+.assignment .section-3 .play-button {
+height: 14px;
+width: 14px;
+}
+
+
+.assignment .section-3  .btn-1{
+height: 30px;
+width: 100px;
+}
+
+.assignment .section-3  .btn-2{
+height: 30px;
+width: 100px;
+}
+
+}
+
+@media (max-width:1200px){ 
+   
+    .assignment .container{
+    padding-top: 35px;
+    padding-bottom: 35px;
+}
+
+.assignment .section-2{
+padding-top: 15px;
+padding-bottom: 15px;
+}
+
+.assignment .section-3{
+padding-top: 15px;
+padding-bottom: 15px;
+}
+.assignment .section-4{
+padding-top: 15px;
+}
+
+.assignment .section-1{
+    padding: 20px;
+}
+
+.assignment .section-1 img{
+max-width: 80px;
+}
+
+.assignment .line {
+  margin: 20px 0;
+}
+
+.assignment .section-2 button{
+padding:8px  25px;
+}
+
+.assignment .section-2  .play{
+width: 12px;
+height: 12px;
+margin-left: 6px;
+}
+
+.assignment .logo-overlay {
+  width: 38px;
+  height: 38px;
+  margin: 20px;
+}
+
+.assignment .section-2  h6{
+margin-bottom: 16px;
+}
+
+.assignment .section-2  .first{
+margin-bottom: 16px;
+
+}
+
+.assignment .section-2  .timeline{
+max-width: 16px;
+}
+
+.assignment .section-2  .second{
+margin-bottom: 16px;
+
+}
+
+.assignment .section-2  li{
+margin-bottom: 6px;
+
+}
+
+.custom-table th,
+.custom-table td {
+  padding: 15px;
+}
+
+.assignment .bg-light-success {
+  padding: 6px 14px;
+}
+
+.assignment .bg-light-warning {
+  padding: 6px 14px;
+}
+
+.assignment .section-3  .circle{
+height:14px;
+width: 14px;
+}
+
+.assignment .section-3 .play-button {
+height: 12px;
+width: 12px;
+}
+
+
+.assignment .section-3  .btn-1{
+height: 30px;
+width: 90px;
+}
+
+.assignment .section-3  .btn-2{
+height: 30px;
+width: 90px;
+} 
+}
+
+@media (max-width:992px){ 
+   
+    .assignment .container{
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.assignment .section-2{
+padding-top: 12px;
+padding-bottom: 12px;
+}
+
+.assignment .section-3{
+padding-top: 12px;
+padding-bottom: 12px;
+}
+.assignment .section-4{
+padding-top: 12px;
+}
+
+.assignment .section-1{
+    padding: 14px;
+}
+
+.assignment .section-1 img{
+max-width: 65px;
+}
+
+.assignment .line {
+  margin: 14px 0;
+}
+
+.assignment .section-2 button{
+padding:6px  15px;
+}
+
+.assignment .section-2  .play{
+width: 8px;
+height: 8px;
+margin-left: 6px;
+}
+
+.assignment .logo-overlay {
+  width: 30px;
+  height: 30px;
+  margin: 15px;
+}
+
+.assignment .section-2  h6{
+margin-bottom: 10px;
+}
+
+.assignment .section-2  .first{
+margin-bottom: 10px;
+
+}
+
+.assignment .section-2  .timeline{
+max-width: 12px;
+}
+
+.assignment .section-2  .second{
+margin-bottom: 10px;
+
+}
+
+.assignment .section-2  li{
+margin-bottom: 6px;
+
+}
+
+.custom-table th,
+.custom-table td {
+  padding: 12px;
+}
+
+.assignment .bg-light-success {
+  padding: 6px 14px;
+}
+
+.assignment .bg-light-warning {
+  padding: 6px 14px;
+}
+
+.assignment .section-3  .circle{
+height:10px;
+width: 10px;
+}
+
+.assignment .section-3 .play-button {
+height: 8px;
+width: 8px;
+}
+
+
+.assignment .section-3  .btn-1{
+height: 22px;
+width: 70px;
+}
+
+.assignment .section-3  .btn-2{
+height: 22px;
+width: 70px;
+} 
+}
