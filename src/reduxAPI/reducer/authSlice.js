@@ -7,13 +7,11 @@ import {
   showToast,
 } from "../../modules/utils";
 
-const initialUser = getLocalItem("user") || null;
 const initialToken = getLocalItem("token") || null;
 
 const authSlice = createSlice({
   name: "auth",
   initialState: {
-    user: initialUser,
     token: initialToken,
     loading: false,
   },
@@ -21,16 +19,13 @@ const authSlice = createSlice({
     setToken: (state, action) => {
       state.token = action.payload;
     },
-    setUser: (state, action) => {
-      state.user = action.payload;
-    },
     setLoading: (state, action) => {
       state.loading = action.payload;
     },
   },
 });
 
-export const { setToken, setUser, setLoading } = authSlice.actions;
+export const { setToken, setLoading } = authSlice.actions;
 export default authSlice.reducer;
 
 
@@ -44,12 +39,10 @@ export const loginUser = (data, navigate) => {
         data
       );
 
-      const { user, token } = response.data.data;
+      const {  token } = response.data.data;
       const successMessage = response.data.message;
 
-      dispatch(setUser(user));
       dispatch(setToken(token));
-      setLocalItem("user", user);
       setLocalItem("token", token);
 
       showToast(successMessage, 1); 
@@ -72,12 +65,10 @@ export const registerOrganizationUser = (formData, navigate) => {
         formData
       );
 
-      const { user, token } = response.data.data;
+      const {  token } = response.data.data;
       const successMessage = response.data.message;
 
-      dispatch(setUser(user));
       dispatch(setToken(token));
-      setLocalItem("user", user);
       setLocalItem("token", token);
 
       showToast(successMessage, 1);
@@ -101,12 +92,10 @@ export const registerStudentUser = (formData, navigate) => {
         formData
       );
 
-      const { user, token } = response.data.data;
+      const { token } = response.data.data;
       const successMessage = response.data.message;
 
-      dispatch(setUser(user));
       dispatch(setToken(token));
-      setLocalItem("user", user);
       setLocalItem("token", token);
 
       showToast(successMessage, 1);
@@ -121,19 +110,34 @@ export const registerStudentUser = (formData, navigate) => {
 };
 
 export const logoutUser = (navigate) => {
-  return async (dispatch) => {
+  return async (dispatch, getState) => {
     try {
-      localStorage.removeItem("user");
-      localStorage.removeItem("token");
+      dispatch(setLoading(true));
 
-      dispatch(setUser(null));
+      const token = getState().auth.token;
+
+      await axios.post(
+        "https://backend-botox.crestinfotech.com/api/auth/logout",
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      localStorage.removeItem("token");
       dispatch(setToken(null));
 
       navigate("/");
       showToast("Logged out successfully!", 1);
     } catch (err) {
       console.error("Logout error:", err);
-      showToast("Error during logout", 0);
+      showToast(getErrorMessage(err), 0);
+    } finally {
+      dispatch(setLoading(false));
     }
   };
 };
+
+

@@ -7,9 +7,9 @@ import history from "../assets/images/header/history.svg";
 import settings from "../assets/images/header/settings.svg";
 import Signout from "../assets/images/header/logout.svg";
 import { NavLink, useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { logoutUser } from "../reduxAPI/reducer/authSlice";
-// import { toast } from "react-toastify";
+import { getUserProfile } from "../reduxAPI/reducer/profile";
 
 const Header = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -17,21 +17,15 @@ const Header = () => {
   const dropdownRef = useRef(null);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const user = useSelector((state) => state.profile.profileData);
 
   const handleToggle = () => {
     setShowMenu(!showMenu);
   };
 
-  let user = null;
-  try {
-    const storedUser = localStorage.getItem("user");
-    if (storedUser && storedUser !== "undefined") {
-      user = JSON.parse(storedUser);
-    }
-  } catch (err) {
-    console.error("Error parsing user from localStorage:", err);
-    user = null;
-  }
+  useEffect(() => {
+    dispatch(getUserProfile());
+  }, [dispatch]);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
