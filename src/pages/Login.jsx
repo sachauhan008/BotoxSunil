@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { loginUser } from "../reduxAPI/reducer/authSlice";
 import "../assets/styles/Login.css";
 import logo from "../assets/images/login/logo.svg";
 import general from "../assets/images/login/girl.svg";
@@ -9,6 +11,8 @@ import { toast } from "react-toastify";
 
 function Login() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { loading, error } = useSelector((state) => state.auth);
 
   const [formData, setFormData] = useState({
     email: "",
@@ -24,30 +28,22 @@ function Login() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const students = JSON.parse(localStorage.getItem("students")) || [];
-    const orgs = JSON.parse(localStorage.getItem("organizations")) || [];
-
-    const allUsers = [...students, ...orgs];
-
-    const matchedUser = allUsers.find(
-      (u) =>
-        u.email === formData.email && u.password === formData.password
-    );
-
-    if (!matchedUser) {
-      toast.error("Invalid email or password");
-      return;
+    try {
+      await dispatch(
+        loginUser(
+          {
+            email: formData.email,
+            password: formData.password,
+          },
+          navigate
+        )
+      );
+    } catch (err) {
+      toast.error("An error occurred");
     }
-
-    localStorage.setItem("token", `${matchedUser.role}-token-123`);
-    localStorage.setItem("user", JSON.stringify(matchedUser));
-
-    toast.success("Login successful!");
-
-    navigate("/training-module");
   };
 
   return (
@@ -71,7 +67,6 @@ function Login() {
             <div
               className="slogan-box text-md-start text-center"
               aria-label="Platform Slogan"
-              tabIndex="0"
             >
               <h2 className="slogan-box-text fw-semibold mb-0">Continue</h2>
               <h2 className="slogan-box-text fw-semibold mb-0">learning and</h2>
@@ -94,17 +89,18 @@ function Login() {
           aria-label="Login Form Section"
         >
           <div className="w-100 right-section">
-            <nav className="position-absolute help" aria-label="Help Navigation">
+            <nav
+              className="position-absolute help"
+              aria-label="Help Navigation"
+            >
               <a href="#" tabIndex="0" aria-label="Need Help?">
                 Need Help?
               </a>
             </nav>
 
             <header>
-              <h3 className="fw-semibold" tabIndex="0">
-                Welcome Back
-              </h3>
-              <p className="text-muted" tabIndex="0">
+              <h3 className="fw-semibold">Welcome Back</h3>
+              <p className="text-muted">
                 Sign in to continue your training journey.
               </p>
             </header>
@@ -178,12 +174,26 @@ function Login() {
               </div>
 
               <button
-                className="btn w-100 mb-1"
+                className="btn  w-100 mb-3 d-flex justify-content-center align-items-center gap-2"
                 type="submit"
                 aria-label="Log In"
+                disabled={loading}
               >
-                Log In
+                {loading ? (
+                  <>
+                    <span
+                      className="spinner-border spinner-border-sm me-2"
+                      role="status"
+                      aria-hidden="true"
+                    ></span>
+                    Logging in...
+                  </>
+                ) : (
+                  "Log In"
+                )}
               </button>
+
+              
 
               <p className="text-center text-muted">
                 <span>Don’t have an account? </span>

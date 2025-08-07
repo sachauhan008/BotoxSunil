@@ -1,4 +1,6 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { registerOrganizationUser } from "../reduxAPI/reducer/authSlice";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { Link, useNavigate } from "react-router-dom";
@@ -10,50 +12,47 @@ import phone from "../assets/images/organizationCreateAccount/phone.png";
 import User from "../assets/images/organizationCreateAccount/user.png";
 import organization from "../assets/images/organizationCreateAccount/organization.png";
 import "../assets/styles/Login.css";
-import { toast } from "react-toastify";
+// import { toast } from "react-toastify";
 
 const validationSchema = Yup.object({
-  orgName: Yup.string().required("Organization name is required"),
-  firstName: Yup.string().required("First name is required"),
-  lastName: Yup.string().required("Last name is required"),
+  name: Yup.string().required("Organization name is required"),
+  first_name: Yup.string().required("First name is required"),
+  last_name: Yup.string().required("Last name is required"),
   email: Yup.string().email("Invalid email").required("Email is required"),
   phone: Yup.string()
     .matches(/^\d{10}$/, "Phone number must be 10 digits")
     .required("Phone number is required"),
   password: Yup.string()
-    .min(6, "Minimum 6 characters")
+    .min(8, "Minimum 8 characters")
     .required("Password is required"),
-  confirmPassword: Yup.string()
+  password_confirmation: Yup.string()
     .oneOf([Yup.ref("password")], "Passwords must match")
     .required("Confirm your password"),
   agreed: Yup.boolean().oneOf([true], "You must agree to terms"),
 });
 
-
 function OrganizationCreateAccount() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { loading } = useSelector((state) => state.auth);
 
   const formik = useFormik({
     initialValues: {
-      orgName: "",
-      firstName: "",
-      lastName: "",
+      name: "",
+      first_name: "",
+      last_name: "",
       email: "",
       phone: "",
       password: "",
-      confirmPassword: "",
+      password_confirmation: "",
       agreed: false,
     },
     validationSchema,
-    onSubmit: (values) => {
-      const orgs = JSON.parse(localStorage.getItem("organizations")) || [];
-      const newOrg = { ...values, role: "organization" };
-      orgs.push(newOrg);
-      localStorage.setItem("organizations", JSON.stringify(orgs));
-      localStorage.setItem("token", "org-token-123");
-      localStorage.setItem("user", JSON.stringify(newOrg));
-      toast.success("Organization account created successfully!");
-      navigate("/organization-subscription");
+    onSubmit: async (values, { setSubmitting }) => {
+      await dispatch(
+        registerOrganizationUser({ ...values, role: "organization" }, navigate)
+      );
+      setSubmitting(false);
     },
   });
 
@@ -77,7 +76,6 @@ function OrganizationCreateAccount() {
             <div
               className="slogan-box text-md-start text-center"
               aria-label="Platform Slogan"
-              tabIndex="0"
             >
               <h2 className="slogan-box-text fw-semibold mb-0">Continue</h2>
               <h2 className="slogan-box-text fw-semibold mb-0">learning and</h2>
@@ -100,23 +98,27 @@ function OrganizationCreateAccount() {
           aria-label="Registration Form Section"
         >
           <div className="w-100 right-section mt-5">
-            <nav className="position-absolute help" aria-label="Help Navigation">
+            <nav
+              className="position-absolute help"
+              aria-label="Help Navigation"
+            >
               <a href="#" tabIndex="0" aria-label="Need Help?">
                 Need Help?
               </a>
             </nav>
 
             <header>
-              <h3 className="fw-semibold" tabIndex="0">
-                Create Your Account
-              </h3>
-              <p className="text-muted" tabIndex="0">
+              <h3 className="fw-semibold">Create Your Account</h3>
+              <p className="text-muted">
                 Join our platform and take your skills to the next level.
               </p>
             </header>
             <hr className="line" aria-hidden="true" />
 
-            <form onSubmit={formik.handleSubmit} aria-label="Organization Registration Form">
+            <form
+              onSubmit={formik.handleSubmit}
+              aria-label="Organization Registration Form"
+            >
               <div className="field">
                 <label htmlFor="orgName">Organization Name</label>
                 <div className="input-group custom-input-group">
@@ -124,19 +126,19 @@ function OrganizationCreateAccount() {
                     <img src={organization} alt="" />
                   </span>
                   <input
-                    id="orgName"
+                    id="name"   
                     type="text"
-                    name="orgName"
+                    name="name"
                     className="custom-input"
                     placeholder="Enter your organization name"
-                    value={formik.values.orgName}
+                    value={formik.values.name}
                     onChange={formik.handleChange}
                     aria-required="true"
                   />
                 </div>
-                {formik.touched.orgName && formik.errors.orgName && (
+                {formik.touched.name && formik.errors.name && (
                   <div className="text-danger errormessage" role="alert">
-                    {formik.errors.orgName}
+                    {formik.errors.name}
                   </div>
                 )}
               </div>
@@ -149,19 +151,19 @@ function OrganizationCreateAccount() {
                       <img src={User} alt="" />
                     </span>
                     <input
-                      id="firstName"
+                      id="first_name"
                       type="text"
-                      name="firstName"
+                      name="first_name"
                       className="custom-input"
                       placeholder="Enter your first name"
-                      value={formik.values.firstName}
+                      value={formik.values.first_name}
                       onChange={formik.handleChange}
                       aria-required="true"
                     />
                   </div>
-                  {formik.touched.firstName && formik.errors.firstName && (
+                  {formik.touched.first_name && formik.errors.first_name && (
                     <div className="text-danger errormessage" role="alert">
-                      {formik.errors.firstName}
+                      {formik.errors.first_name}
                     </div>
                   )}
                 </div>
@@ -173,19 +175,19 @@ function OrganizationCreateAccount() {
                       <img src={User} alt="" />
                     </span>
                     <input
-                      id="lastName"
+                      id="last_name"
                       type="text"
-                      name="lastName"
+                      name="last_name"
                       className="custom-input"
                       placeholder="Enter your last name"
-                      value={formik.values.lastName}
+                      value={formik.values.last_name}
                       onChange={formik.handleChange}
                       aria-required="true"
                     />
                   </div>
-                  {formik.touched.lastName && formik.errors.lastName && (
+                  {formik.touched.last_name && formik.errors.last_name && (
                     <div className="text-danger errormessage" role="alert">
-                      {formik.errors.lastName}
+                      {formik.errors.last_name}
                     </div>
                   )}
                 </div>
@@ -276,21 +278,21 @@ function OrganizationCreateAccount() {
                       <img src={Password} alt="" />
                     </span>
                     <input
-                      id="confirmPassword"
+                      id="password_confirmation"
                       type="password"
-                      name="confirmPassword"
+                      name="password_confirmation"
                       className="custom-input"
                       placeholder="Confirm your password"
-                      value={formik.values.confirmPassword}
+                      value={formik.values.password_confirmation}
                       onChange={formik.handleChange}
                       aria-required="true"
                       autoComplete="new-password"
                     />
                   </div>
-                  {formik.touched.confirmPassword &&
-                    formik.errors.confirmPassword && (
+                  {formik.touched.password_confirmation &&
+                    formik.errors.password_confirmation && (
                       <div className="text-danger errormessage" role="alert">
-                        {formik.errors.confirmPassword}
+                        {formik.errors.password_confirmation}
                       </div>
                     )}
                 </div>
@@ -326,11 +328,23 @@ function OrganizationCreateAccount() {
               </div>
 
               <button
-                className="btn btn-primary w-100 mb-3"
+                className="btn btn-primary w-100 mb-3 d-flex justify-content-center align-items-center gap-2"
                 type="submit"
                 aria-label="Create Account"
+                disabled={loading}
               >
-                Create Account
+                {loading ? (
+                  <>
+                    <span
+                      className="spinner-border spinner-border-sm"
+                      role="status"
+                      aria-hidden="true"
+                    ></span>
+                    Creating Account...
+                  </>
+                ) : (
+                  "Create Account"
+                )}
               </button>
 
               <Link

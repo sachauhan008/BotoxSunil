@@ -20,9 +20,11 @@ import Assignment from "./pages/Assignment";
 import ScrollToTop from "./components/ScrollToTop";
 import EditProfile from "./pages/EditProfile";
 import PaymentHistory from "./pages/PaymentHistory";
-// import StartNewAttempt from "./pages/StartNewAttempt";
+import StartNewAttempt from "./pages/StartNewAttempt";
 import ErrorBoundary from "./components/layout/ErrorBoundary";
 import ForgotPassword from "./pages/ForgotPassword";
+import PrivateRoute from "./components/layout/PrivateRoute";
+import PublicRoute from "./components/layout/PublicRoute";
 
 
 function App() {
@@ -35,7 +37,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Navigate to="/login" />} />
             <Route path="/student-register" element={<StudentCreateAccount />} />
-            <Route path="/login" element={<Login />} />
+            <Route path="/login" element={<PublicRoute><Login /></PublicRoute>} />
             <Route path="/organization-register" element={<OrganizationCreateAccount />} />
             <Route path="/student-subscription" element={<SubscriptionStudent />} />
             <Route
@@ -43,12 +45,12 @@ function App() {
               element={<SubscriptionOrganization />}
             />
             <Route path="/payment" element={<Payment />} />
-            <Route path="/training-module" element={<TrainingModules />} />
-            <Route path="/assignment" element={<Assignment />} />
-            <Route path="/my-subscription" element={<MySubscription />} />
-            <Route path="/edit-profile" element={<EditProfile />} />
-            <Route path="/payment-history" element={<PaymentHistory />} />
-            {/* <Route path="/start-new-attempt" element={<StartNewAttempt />} /> */}
+            <Route path="/training-module" element={    <PrivateRoute><TrainingModules /></PrivateRoute>} />
+            <Route path="/assignment" element={<PrivateRoute><Assignment /></PrivateRoute>} />
+            <Route path="/my-subscription" element={<PrivateRoute><MySubscription /></PrivateRoute>} />
+            <Route path="/edit-profile" element={<PrivateRoute><EditProfile /></PrivateRoute>} />
+            <Route path="/payment-history" element={<PrivateRoute><PaymentHistory /></PrivateRoute>} />
+            <Route path="/start-new-attempt" element={<PrivateRoute><StartNewAttempt /></PrivateRoute>} />
             <Route path="/forgot-password" element={<ForgotPassword />} />
           </Routes>
         </ScreenCheckWrapper>

@@ -5,18 +5,33 @@ import logo1 from "../assets/images/header/logo1.svg";
 import edit from "../assets/images/header/edit.svg";
 import history from "../assets/images/header/history.svg";
 import settings from "../assets/images/header/settings.svg";
-import logout from "../assets/images/header/logout.svg";
+import Signout from "../assets/images/header/logout.svg";
 import { NavLink, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { logoutUser } from "../reduxAPI/reducer/authSlice";
+// import { toast } from "react-toastify";
 
 const Header = () => {
   const [showMenu, setShowMenu] = useState(false);
   const [showLogoutModal, setShowLogoutModal] = useState(false);
   const dropdownRef = useRef(null);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleToggle = () => {
     setShowMenu(!showMenu);
   };
+
+  let user = null;
+  try {
+    const storedUser = localStorage.getItem("user");
+    if (storedUser && storedUser !== "undefined") {
+      user = JSON.parse(storedUser);
+    }
+  } catch (err) {
+    console.error("Error parsing user from localStorage:", err);
+    user = null;
+  }
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -31,9 +46,7 @@ const Header = () => {
   }, []);
 
   const handleLogout = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
-    navigate("/login");
+    dispatch(logoutUser(navigate));
   };
 
   return (
@@ -100,26 +113,15 @@ const Header = () => {
               }}
             >
               <span className="fw-bold text-dark">
-                {(() => {
-                  const user = JSON.parse(localStorage.getItem("user"));
-                  if (user && user.firstName && user.lastName) {
-                    return `${user.firstName} ${user.lastName}`;
-                  }
-                  return "User";
-                })()}
-              </span>{" "}
-              {(() => {
-                const user = JSON.parse(localStorage.getItem("user"));
-                const letter =
-                  user && user.firstName
-                    ? user.firstName.charAt(0).toUpperCase()
-                    : "U";
-                return (
-                  <div className="profile-image" aria-label="User Initial">
-                    {letter}
-                  </div>
-                );
-              })()}
+                {user?.first_name && user?.last_name
+                  ? `${user.first_name} ${user.last_name}`
+                  : "User"}
+              </span>
+              <div className="profile-image" aria-label="User Initial">
+                {user?.first_name
+                  ? user.first_name.charAt(0).toUpperCase()
+                  : "U"}
+              </div>
             </div>
 
             {showMenu && (
@@ -137,7 +139,12 @@ const Header = () => {
                   tabIndex={0}
                   type="button"
                 >
-                  <img src={edit} alt="" className="dropdown" aria-hidden="true" />
+                  <img
+                    src={edit}
+                    alt=""
+                    className="dropdown"
+                    aria-hidden="true"
+                  />
                   Edit Profile
                 </button>
                 <button
@@ -149,7 +156,12 @@ const Header = () => {
                   tabIndex={0}
                   type="button"
                 >
-                  <img src={history} alt="" className="dropdown" aria-hidden="true" />
+                  <img
+                    src={history}
+                    alt=""
+                    className="dropdown"
+                    aria-hidden="true"
+                  />
                   View Payment History
                 </button>
                 <button
@@ -158,7 +170,12 @@ const Header = () => {
                   tabIndex={0}
                   type="button"
                 >
-                  <img src={settings} alt="" className="dropdown" aria-hidden="true" />
+                  <img
+                    src={settings}
+                    alt=""
+                    className="dropdown"
+                    aria-hidden="true"
+                  />
                   Edit Preferences
                 </button>
                 <div className="line" aria-hidden="true"></div>
@@ -170,7 +187,12 @@ const Header = () => {
                   tabIndex={0}
                   type="button"
                 >
-                  <img src={logout} alt="" className="dropdown" aria-hidden="true" />
+                  <img
+                    src={Signout}
+                    alt=""
+                    className="dropdown"
+                    aria-hidden="true"
+                  />
                   Sign Out
                 </button>
               </div>
@@ -183,10 +205,17 @@ const Header = () => {
         <>
           <div className="custom-modal-overlay" aria-hidden="true" />
 
-          <div className="custom-modal-container" role="dialog" aria-modal="true" aria-label="Sign Out Confirmation">
+          <div
+            className="custom-modal-container"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Sign Out Confirmation"
+          >
             <div className="custom-modal shadow">
               <div className="modal-header border-0">
-                <h5 className="modal-title" tabIndex={0}>Confirm Signout</h5>
+                <h5 className="modal-title" tabIndex={0}>
+                  Confirm Signout
+                </h5>
                 <button
                   type="button"
                   className="btn-close"
