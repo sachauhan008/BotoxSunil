@@ -1,6 +1,4 @@
 import React from "react";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
 import Play from "../assets/images/assignment/Play.svg";
 import assignmentlogo from "../assets/images/assignment/assignment-logo.svg";
 import assignmentOverview from "../assets/images/assignment/assignment-overview.png";
@@ -17,7 +15,6 @@ function Assignment() {
 
   return (
     <>
-      <Header />
       <div className="assignment">
         <div className="container">
           <section
@@ -200,7 +197,6 @@ function Assignment() {
           </section>
         </div>
       </div>
-      <Footer />
     </>
   );
 }

@@ -1,6 +1,4 @@
 import React from "react";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
 import Play from "../assets/images/assignment/Play.svg";
 import assignmentlogo from "../assets/images/newAttempt/assignment-logo.svg";
 import assignmentOverview from "../assets/images/newAttempt/assignment-overview.png";
@@ -13,7 +11,6 @@ function StartNewAttempt() {
 
   return (
     <>
-      <Header />
       <div className="new-attempt">
         <div className="container">
           <section
@@ -90,7 +87,6 @@ function StartNewAttempt() {
           </section>
         </div>
       </div>
-      <Footer />
     </>
   );
 }

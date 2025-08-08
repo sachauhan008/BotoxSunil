@@ -1,12 +1,9 @@
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+
 import "../assets/styles/PaymentHistory.css";
 
 function PaymentHistory() {
   return (
     <>
-      <div style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
-        <Header />
         <main
           className="paymentHistory"
           style={{ flex: 1, display: "flex", flexDirection: "column" }}
@@ -94,8 +91,6 @@ function PaymentHistory() {
             </div>
           </section>
         </main>
-        <Footer />
-      </div>
     </>
   );
 }

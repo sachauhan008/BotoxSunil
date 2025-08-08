@@ -1,8 +1,6 @@
 import React from "react";
 import icon from "../assets/images/mySubscription/true.png";
 import file from "../assets/images/mySubscription/file-text.svg";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
 import "../assets/styles/MySubscription.css";
 
 function MySubscription() {
@@ -16,8 +14,7 @@ function MySubscription() {
 
   return (
     <>
-      <div style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
-        <Header />
+
         <main className="subscription" style={{ flex: 1, display: "flex", flexDirection: "column" }} aria-label="My Subscription Page">
           <section className="section-1 d-flex justify-content-center align-items-center" aria-label="Subscription Header">
             <div className="container d-flex justify-content-center align-item-center">
@@ -102,8 +99,6 @@ function MySubscription() {
             </div>
           </section>
         </main>
-        <Footer />
-      </div>
     </>
   );
 }

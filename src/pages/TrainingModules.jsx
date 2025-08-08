@@ -1,6 +1,4 @@
 import React from "react";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
 import Facial from "../assets/images/trainingModules/facial.png";
 import Play from "../assets/images/trainingModules/Play.svg";
 import "../assets/styles/TrainingModules.css";
@@ -11,8 +9,7 @@ function TrainingModules() {
 
   return (
     <>
-      <div style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
-        <Header />
+
         <main className="training" style={{ flex: 1, display: "flex", flexDirection: "column" }} aria-label="Training Modules Page">
           <section className="section-1 d-flex justify-content-center align-items-center" aria-label="Assignment Section">
             <div className="container d-flex justify-content-center align-item-center">
@@ -57,8 +54,6 @@ function TrainingModules() {
             </div>
           </section>
         </main>
-        <Footer />
-      </div>
     </>
   );
 }

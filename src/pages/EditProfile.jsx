@@ -5,8 +5,6 @@ import Email from "../assets/images/editProfile/email.png";
 import Password from "../assets/images/editProfile/lock.svg";
 import phone from "../assets/images/editProfile/phone.png";
 import User from "../assets/images/editProfile/user.png";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
 import "../assets/styles/EditProfile.css";
 import { toast } from "react-toastify";
 
@@ -112,8 +110,6 @@ function EditProfile() {
 
   return (
     <>
-      <div style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
-        <Header />
         <div className="editProfile" style={{ flex: 1, display: "flex", flexDirection: "column" }}>
           <section className="section-1 d-flex justify-content-center align-items-center" aria-label="Edit Profile Header">
             <div className="container d-flex justify-content-center align-item-center">
@@ -281,8 +277,6 @@ function EditProfile() {
             </form>
           </section>
         </div>
-        <Footer />
-      </div>
     </>
   );
 }
