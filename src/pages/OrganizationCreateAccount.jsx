@@ -327,25 +327,26 @@ function OrganizationCreateAccount() {
                 )}
               </div>
 
-              <button
-                className="btn btn-primary w-100 mb-3 d-flex justify-content-center align-items-center gap-2"
-                type="submit"
-                aria-label="Create Account"
-                disabled={loading}
-              >
-                {loading ? (
-                  <>
-                    <span
-                      className="spinner-border spinner-border-sm"
-                      role="status"
-                      aria-hidden="true"
-                    ></span>
-                    Creating Account...
-                  </>
-                ) : (
-                  "Create Account"
-                )}
-              </button>
+               {loading ? (
+                <div className="w-100 mb-3 d-flex justify-content-center align-items-center">
+                  <div
+                    className="spinner-border"
+                    style={{ width: "1.5rem", height: "1.5rem", color: "#072bf2" }}
+                    role="status"
+                    aria-label="Creating Account"
+                  >
+                    <span className="visually-hidden">Loading...</span>
+                  </div>
+                </div>
+              ) : (
+                <button
+                  className="btn w-100 mb-3 d-flex justify-content-center align-items-center gap-2"
+                  type="submit"
+                  aria-label="Create Account"
+                >
+                  Create Account
+                </button>
+              )}
 
               <Link
                 to="/student-register"
