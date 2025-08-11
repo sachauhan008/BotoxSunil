@@ -12,6 +12,7 @@ import phone from "../assets/images/organizationCreateAccount/phone.png";
 import User from "../assets/images/organizationCreateAccount/user.png";
 import organization from "../assets/images/organizationCreateAccount/organization.png";
 import "../assets/styles/Login.css";
+import Spinner from "../components/Spinner";
 // import { toast } from "react-toastify";
 
 const validationSchema = Yup.object({
@@ -327,17 +328,8 @@ function OrganizationCreateAccount() {
                 )}
               </div>
 
-               {loading ? (
-                <div className="w-100 mb-3 d-flex justify-content-center align-items-center">
-                  <div
-                    className="spinner-border"
-                    style={{ width: "1.5rem", height: "1.5rem", color: "#072bf2" }}
-                    role="status"
-                    aria-label="Creating Account"
-                  >
-                    <span className="visually-hidden">Loading...</span>
-                  </div>
-                </div>
+              {loading ? (
+                <Spinner/>
               ) : (
                 <button
                   className="btn w-100 mb-3 d-flex justify-content-center align-items-center gap-2"

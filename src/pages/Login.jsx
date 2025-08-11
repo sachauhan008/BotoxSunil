@@ -8,6 +8,7 @@ import Email from "../assets/images/login/email.png";
 import Password from "../assets/images/login/lock.svg";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import Spinner from "../components/Spinner";
 
 function Login() {
   const navigate = useNavigate();
@@ -174,16 +175,7 @@ function Login() {
               </div>
 
               {loading ? (
-                <div className="w-100 mb-3 d-flex justify-content-center align-items-center">
-                  <div
-                    className="spinner-border"
-                    style={{ width: "1.5rem", height: "1.5rem", color: "#072bf2" }}
-                    role="status"
-                    aria-label="Logging in..."
-                  >
-                    <span className="visually-hidden">Loading...</span>
-                  </div>
-                </div>
+                <Spinner/>
               ) : (
                 <button
                   className="btn w-100 mb-3 d-flex justify-content-center align-items-center gap-2"
@@ -193,8 +185,6 @@ function Login() {
                   Log In
                 </button>
               )}
-
-              
 
               <p className="text-center text-muted">
                 <span>Don’t have an account? </span>

@@ -73,7 +73,6 @@ function ForgotPassword() {
             <div
               className="slogan-box text-md-start text-center"
               aria-label="Platform Slogan"
-              tabIndex="0"
             >
               <h2 className="slogan-box-text fw-semibold mb-0">Continue</h2>
               <h2 className="slogan-box-text fw-semibold mb-0">learning and</h2>

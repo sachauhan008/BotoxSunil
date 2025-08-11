@@ -4,7 +4,6 @@ import * as Yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
 import { registerStudentUser } from "../reduxAPI/reducer/authSlice";
 import { useNavigate, Link } from "react-router-dom";
-// import { toast } from "react-toastify";
 import logo from "../assets/images/studentCreateAccount/logo.svg";
 import general from "../assets/images/studentCreateAccount/girl.svg";
 import Email from "../assets/images/studentCreateAccount/email.png";
@@ -12,6 +11,7 @@ import Password from "../assets/images/studentCreateAccount/lock.svg";
 import User from "../assets/images/studentCreateAccount/user.png";
 import phone from "../assets/images/studentCreateAccount/phone.png";
 import "../assets/styles/Login.css";
+import Spinner from "../components/Spinner";
 
 const validationSchema = Yup.object({
   first_name: Yup.string().required("First name is required"),
@@ -21,7 +21,7 @@ const validationSchema = Yup.object({
     .matches(/^\d{10}$/, "Phone number must be 10 digits")
     .required("Phone number is required"),
   password: Yup.string()
-    .min(8, "Minimum 8 characters")
+    .min(8, "Minimum 8 characters") 
     .required("Password is required"),
   password_confirmation: Yup.string()
     .oneOf([Yup.ref("password")], "Passwords must match")
@@ -299,17 +299,8 @@ function StudentCreateAccount() {
                 )}
               </div>
 
-              {loading ? (
-                <div className="w-100 mb-3 d-flex justify-content-center align-items-center">
-                  <div
-                    className="spinner-border"
-                    style={{ width: "1.5rem", height: "1.5rem", color: "#072bf2" }}
-                    role="status"
-                    aria-label="Creating Account"
-                  >
-                    <span className="visually-hidden">Loading...</span>
-                  </div>
-                </div>
+               {loading ? (
+                <Spinner/>
               ) : (
                 <button
                   className="btn w-100 mb-3 d-flex justify-content-center align-items-center gap-2"

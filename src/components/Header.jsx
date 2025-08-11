@@ -10,10 +10,12 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logoutUser } from "../reduxAPI/reducer/authSlice";
 import { getUserProfile } from "../reduxAPI/reducer/profile";
+import Spinner from "./Spinner";
 
 const Header = () => {
   const [showMenu, setShowMenu] = useState(false);
   const [showLogoutModal, setShowLogoutModal] = useState(false);
+  const [logoutLoading, setLogoutLoading] = useState(false);
   const dropdownRef = useRef(null);
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -39,8 +41,10 @@ const Header = () => {
     };
   }, []);
 
-  const handleLogout = () => {
-    dispatch(logoutUser(navigate));
+  const handleLogout = async () => {
+    setLogoutLoading(true);
+    await dispatch(logoutUser(navigate));
+    setLogoutLoading(false);
   };
 
   return (
@@ -71,7 +75,6 @@ const Header = () => {
                   : "fw-semibold text-decoration-none"
               }
               aria-label="Go to Assessments"
-              tabIndex={0}
             >
               Assessments
             </NavLink>
@@ -84,7 +87,6 @@ const Header = () => {
                   : "fw-semibold text-decoration-none"
               }
               aria-label="Go to My Subscriptions"
-              tabIndex={0}
             >
               My Subscriptions
             </NavLink>
@@ -126,12 +128,8 @@ const Header = () => {
               >
                 <button
                   className="dropdown-item d-flex align-items-center gap-3"
-                  onClick={() => {
-                    navigate("/edit-profile");
-                  }}
+                  onClick={() => navigate("/edit-profile")}
                   aria-label="Edit Profile"
-                  tabIndex={0}
-                  type="button"
                 >
                   <img
                     src={edit}
@@ -143,12 +141,8 @@ const Header = () => {
                 </button>
                 <button
                   className="dropdown-item d-flex align-items-center gap-3"
-                  onClick={() => {
-                    navigate("/payment-history");
-                  }}
+                  onClick={() => navigate("/payment-history")}
                   aria-label="View Payment History"
-                  tabIndex={0}
-                  type="button"
                 >
                   <img
                     src={history}
@@ -161,8 +155,6 @@ const Header = () => {
                 <button
                   className="dropdown-item d-flex align-items-center gap-3"
                   aria-label="Edit Preferences"
-                  tabIndex={0}
-                  type="button"
                 >
                   <img
                     src={settings}
@@ -178,8 +170,6 @@ const Header = () => {
                   onClick={() => setShowLogoutModal(true)}
                   style={{ cursor: "pointer" }}
                   aria-label="Sign Out"
-                  tabIndex={0}
-                  type="button"
                 >
                   <img
                     src={Signout}
@@ -198,7 +188,6 @@ const Header = () => {
       {showLogoutModal && (
         <>
           <div className="custom-modal-overlay" aria-hidden="true" />
-
           <div
             className="custom-modal-container"
             role="dialog"
@@ -207,9 +196,7 @@ const Header = () => {
           >
             <div className="custom-modal shadow">
               <div className="modal-header border-0">
-                <h5 className="modal-title" tabIndex={0}>
-                  Confirm Signout
-                </h5>
+                <h5 className="modal-title">Confirm Signout</h5>
                 <button
                   type="button"
                   className="btn-close"
@@ -218,29 +205,29 @@ const Header = () => {
                 ></button>
               </div>
               <div className="modal-body">
-                <p tabIndex={0}>Are you sure you want to sign out?</p>
+                <p>Are you sure you want to sign out?</p>
               </div>
               <div className="modal-footer border-0 d-flex justify-content-end gap-2">
                 <button
-                  className="btn btn-secondary"
+                  className="btn btn-secondary w-100 "
                   onClick={() => setShowLogoutModal(false)}
-                  style={{ marginLeft: "5px" }}
-                  aria-label="Cancel"
                   type="button"
                 >
                   Cancel
                 </button>
-                <button
-                  className="btn btn-danger"
-                  onClick={() => {
-                    setShowLogoutModal(false);
-                    handleLogout();
-                  }}
-                  aria-label="Sign out"
-                  type="button"
-                >
-                  Sign out
-                </button>
+                {logoutLoading ? (
+                  <Spinner/>
+                ) : (
+                  <button
+                    className="btn btn-danger w-100 d-flex justify-content-center align-items-center gap-2"
+                    onClick={() => {
+                      handleLogout();
+                    }}
+                    type="button"
+                  >
+                    Sign out
+                  </button>
+                )}
               </div>
             </div>
           </div>
