@@ -13,10 +13,10 @@ function PaymentHistory() {
             <div className="container d-flex justify-content-center align-item-center">
               <div className="text-center">
                 <div className="slogan-box">
-                  <h2 className="fw-semibold text-white mb-4" tabIndex="0">
+                  <h2 className="fw-semibold text-white mb-4">
                     Payment History
                   </h2>
-                  <p tabIndex="0">
+                  <p>
                     Join our platform and take your skills to the next level.
                   </p>
                 </div>
@@ -28,7 +28,7 @@ function PaymentHistory() {
           </section>
 
           <section className="container section-2 py-5" aria-label="Events and Transactions">
-            <h4 className="fw-semibold" tabIndex="0">Events & Transactions</h4>
+            <h4 className="fw-semibold">Events & Transactions</h4>
             <div className="line" aria-hidden="true"></div>
             <div className="table-responsive">
               <table className="table align-middle custom-table m-0" aria-label="Payment Events Table">

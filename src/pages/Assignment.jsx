@@ -41,7 +41,7 @@ function Assignment() {
           </section>
 
           <section className="section-2" aria-label="Assignment Overview">
-            <h4 className="fw-semibold" tabIndex="0">
+            <h4 className="fw-semibold">
               Assignment Overview
             </h4>
             <div className="line" aria-hidden="true"></div>
@@ -78,10 +78,10 @@ function Assignment() {
               </div>
 
               <div className="col-md-6">
-                <h6 className="fw-semibold" tabIndex="0">
+                <h6 className="fw-semibold">
                   Assignment Description
                 </h6>
-                <p className="first" tabIndex="0">
+                <p className="first" >
                   Study the facial muscle and vascular anatomy necessary for
                   Botox administration. Learn to identify safe injection zones,
                   avoid high-risk areas, and understand muscle functionality for
@@ -99,7 +99,7 @@ function Assignment() {
                   <strong>Due:</strong> August 31, 2024 at 11:59 PM
                 </p>
 
-                <h6 className="fw-semibold mt-4" tabIndex="0">
+                <h6 className="fw-semibold mt-4" >
                   What to Expect Upon Completion
                 </h6>
                 <ul className="list-unstyled" aria-label="Completion Benefits">
@@ -121,7 +121,7 @@ function Assignment() {
           </section>
 
           <section className="section-3" aria-label="Assignment Attempts">
-            <h4 className="fw-semibold" tabIndex="0">
+            <h4 className="fw-semibold">
               Assignment Attempts
             </h4>
             <div className="line" aria-hidden="true"></div>
@@ -176,18 +176,18 @@ function Assignment() {
           </section>
 
           <section className="section-4" aria-label="Activity Descriptions">
-            <h4 className="fw-semibold" tabIndex="0">
+            <h4 className="fw-semibold" >
               Activity Descriptions
             </h4>
             <div className="line" aria-hidden="true"></div>
             <div className="p-4 box">
-              <h6 className="fw-semibold m-0" tabIndex="0">
+              <h6 className="fw-semibold m-0">
                 Video Tutorial
               </h6>
               <p>
                 Watch the required video to understand facial anatomy relevant to Botox treatments, including safe injection zones and critical muscle groups
               </p>
-              <h6 className="fw-semibold m-0" tabIndex="0">
+              <h6 className="fw-semibold m-0">
                 Facial Anatomy Assessment
               </h6>
               <p className="m-0">

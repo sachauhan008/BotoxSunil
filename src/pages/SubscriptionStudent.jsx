@@ -25,16 +25,15 @@ const SubscriptionStudent = () => {
             <div
               className="col-md-6 text-center text-md-start column-1"
               aria-label="Subscription Introduction"
-              tabIndex="0"
             >
               <h1 className="fw-semibold mb-2">
                 Welcome to <span>Botox</span>
               </h1>
               <h2 className="fw-semibold mb-4">Choose a Plan</h2>
-              <p className="first mb-3" tabIndex="0">
+              <p className="first mb-3">
                 Select a subscription to access the training platform.
               </p>
-              <p className="second" tabIndex="0">
+              <p className="second">
                 Unlock expert-led modules, interactive 3D anatomy tools, and
                 hands-on assessments designed to elevate your skills. Whether
                 you're just starting or looking to deepen your expertise, our
@@ -49,7 +48,6 @@ const SubscriptionStudent = () => {
               <section
                 className="card shadow rounded-4 w-100"
                 aria-label="Student Plan Details"
-                tabIndex="0"
               >
                 <h3 className="fw-bold text-center">Student Plan</h3>
                 <div className="line" aria-hidden="true"></div>

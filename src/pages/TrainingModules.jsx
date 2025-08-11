@@ -15,8 +15,8 @@ function TrainingModules() {
             <div className="container d-flex justify-content-center align-item-center">
               <div className="text-center">
                 <div className="slogan-box mb-3">
-                  <h2 className="fw-semibold text-white mb-4" tabIndex="0">Assignment</h2>
-                  <p tabIndex="0">Join our platform and take your skills to the next level.</p>
+                  <h2 className="fw-semibold text-white mb-4">Assignment</h2>
+                  <p>Join our platform and take your skills to the next level.</p>
                 </div>
                 <button
                   className="btn"
@@ -37,7 +37,7 @@ function TrainingModules() {
             <img src={Facial} alt="Facial anatomy illustration" className="facial" />
             <div className="card shadow-sm border-0 rounded-3" aria-label="Facial Anatomy Module Card">
               <div className="card-body d-flex flex-column justify-content-between p-3">
-                <h5 className="card-title fw-semibold mb-3" tabIndex="0">
+                <h5 className="card-title fw-semibold mb-3">
                   Facial Anatomy For <br />
                   Botox Application <br />
                   Treatment

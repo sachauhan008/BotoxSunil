@@ -115,8 +115,8 @@ function EditProfile() {
             <div className="container d-flex justify-content-center align-item-center">
               <div className="text-center ">
                 <div className="slogan-box">
-                  <h2 className="fw-semibold text-white mb-4" tabIndex="0">Edit Profile</h2>
-                  <p tabIndex="0">Join our platform and take your skills to the next level.</p>
+                  <h2 className="fw-semibold text-white mb-4">Edit Profile</h2>
+                  <p >Join our platform and take your skills to the next level.</p>
                 </div>
               </div>
               <div className="circle circle-1" aria-hidden="true"></div>

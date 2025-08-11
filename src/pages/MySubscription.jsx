@@ -20,10 +20,10 @@ function MySubscription() {
             <div className="container d-flex justify-content-center align-item-center">
               <div className="text-center">
                 <div className="slogan-box">
-                  <h2 className="fw-semibold text-white mb-4" tabIndex="0">
+                  <h2 className="fw-semibold text-white mb-4">
                     My Subscriptions
                   </h2>
-                  <p tabIndex="0">Join our platform and take your skills to the next level.</p>
+                  <p>Join our platform and take your skills to the next level.</p>
                 </div>
               </div>
               <div className="circle circle-1" aria-hidden="true"></div>
@@ -34,8 +34,8 @@ function MySubscription() {
 
           <section className="container section-2 d-flex justify-content-center align-items-center py-5" aria-label="Current Plan Details">
             <div className="card shadow rounded-4 border-0 current-plan-card w-100">
-              <h5 className="fw-semibold" tabIndex="0">Current Plan</h5>
-              <p className="first m-0" tabIndex="0">Manage your Botox Training Plan</p>
+              <h5 className="fw-semibold">Current Plan</h5>
+              <p className="first m-0">Manage your Botox Training Plan</p>
               <div className="line" aria-hidden="true"></div>
 
               <div className="row">

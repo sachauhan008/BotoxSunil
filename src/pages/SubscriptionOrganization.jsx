@@ -29,14 +29,14 @@ const SubscriptionOrganization = () => {
         aria-label="Subscription Selection Section"
       >
         <div className="text-center mt-4 mb-3 first">
-          <h1 className="fw-semibold" tabIndex="0">
+          <h1 className="fw-semibold">
             Welcome to <span>Botox</span> Choose a Plan
           </h1>
-          <i className="description-1" tabIndex="0">
+          <i className="description-1" >
             Select a subscription to empower your team with advanced training
             tools.
           </i>
-          <p className="description-2" tabIndex="0">
+          <p className="description-2">
             Unlock team-wide access to expert-led modules, interactive 3D
             anatomy viewers, and practical assessments built to enhance clinical
             outcomes.
@@ -49,7 +49,6 @@ const SubscriptionOrganization = () => {
               className="card shadow rounded-4"
               key={index}
               aria-label={`${plan.tier} Plan Details`}
-              tabIndex="0"
             >
               <h2 className="fw-bold text-center">{plan.tier}</h2>
               <div className="line" aria-hidden="true"></div>

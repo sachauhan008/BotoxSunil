@@ -107,19 +107,19 @@ function Payment() {
         <div className="payment-box d-flex">
           <section className="column-1" aria-label="Selected Plan Details">
             <div className="p-4">
-              <h2 className="fw-semibold" tabIndex="0">Your Selected Plan</h2>
-              <p className="first" tabIndex="0">
+              <h2 className="fw-semibold">Your Selected Plan</h2>
+              <p className="first">
                 Unlock full access to expert-led training and tools.
               </p>
               <div className="line" aria-hidden="true"></div>
-              <p className="second d-flex justify-content-between" tabIndex="0">
+              <p className="second d-flex justify-content-between">
                 <span>Plan:</span> {selectedPlan.tier}
               </p>
-              <p className="second d-flex justify-content-between" tabIndex="0">
+              <p className="second d-flex justify-content-between">
                 <span>Price:</span>{" "}
                 <span className="fw-bold">${selectedPlan.price}/year</span>
               </p>
-              <p className="second d-flex justify-content-between mb-3" tabIndex="0">
+              <p className="second d-flex justify-content-between mb-3">
                 <span>Duration:</span> {selectedPlan.duration}
               </p>
               <ul className="list-unstyled mt-4" aria-label="Plan Features">
@@ -145,8 +145,8 @@ function Payment() {
 
           <section className="column-2" aria-label="Payment Form Section">
             <div className="p-3">
-              <h2 className="fw-semibold" tabIndex="0">Payment Information</h2>
-              <p className="first" tabIndex="0">
+              <h2 className="fw-semibold">Payment Information</h2>
+              <p className="first">
                 Enter your details to complete the purchase securely.
               </p>
               <div className="line" aria-hidden="true"></div>

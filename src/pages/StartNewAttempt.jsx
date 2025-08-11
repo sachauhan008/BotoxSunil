@@ -37,16 +37,16 @@ function StartNewAttempt() {
           </section>
 
           <section className="section-2" aria-label="Assignment Descriptions">
-            <h4 className="fw-semibold" tabIndex="0">Descriptions</h4>
+            <h4 className="fw-semibold">Descriptions</h4>
             <div className="line" aria-hidden="true"></div>
             <div className="p-4 box">
-              <h6 className="fw-semibold m-0" tabIndex="0">Video Tutorial</h6>
+              <h6 className="fw-semibold m-0">Video Tutorial</h6>
               <p>
                 Watch the required video to understand facial anatomy relevant
                 to Botox treatments, including safe injection zones and critical
                 muscle groups
               </p>
-              <h6 className="fw-semibold m-0" tabIndex="0">Facial Anatomy Assessment</h6>
+              <h6 className="fw-semibold m-0">Facial Anatomy Assessment</h6>
               <p className="m-0">
                 Review detailed facial anatomy through interactive models and
                 guided visuals. Learn to identify key muscles, vessels, and
@@ -57,7 +57,7 @@ function StartNewAttempt() {
           </section>
 
           <section className="section-3" aria-label="Introduction Video">
-            <h4 className="fw-semibold" tabIndex="0">Introduction Video</h4>
+            <h4 className="fw-semibold">Introduction Video</h4>
             <div className="line" aria-hidden="true"></div>
             <div className="d-flex justify-content-center align-items-center">
               <div className="video-wrapper d-flex flex-column">
