@@ -14,6 +14,7 @@ import ErrorBoundary from "../components/layout/ErrorBoundary";
 import PrivateRoute from "../components/layout/PrivateRoute";
 import PublicRoute from "../components/layout/PublicRoute";
 import PrivateLayout from "../components/layout/PrivateLayout";
+import RoleProtectedRoute from "../components/layout/RoleProtectedRoute";
 import Spinner from "../components/Spinner";
 
 const Login = lazy(() => import("../pages/Login"));
@@ -44,8 +45,8 @@ function Container() {
                 <Route path="/login" element={<PublicRoute><Login /></PublicRoute>} />
                 <Route path="/student-register" element={<StudentCreateAccount />} />
                 <Route path="/organization-register" element={<OrganizationCreateAccount />} />
-                <Route path="/student-subscription" element={<SubscriptionStudent />} />
-                <Route path="/organization-subscription" element={<SubscriptionOrganization />} />
+                <Route path="/student-subscription" element={<RoleProtectedRoute allowedRoles={[4]}><SubscriptionStudent /></RoleProtectedRoute>} />
+                <Route path="/organization-subscription" element={<RoleProtectedRoute allowedRoles={[2]}><SubscriptionOrganization /></RoleProtectedRoute>} />
                 <Route path="/payment" element={<Payment />} />
                 <Route path="/forgot-password" element={<ForgotPassword />} />
 

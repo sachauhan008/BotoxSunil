@@ -1,19 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import logo1 from "../assets/images/subscriptionOrganization/logo1.svg";
 import icon from "../assets/images/subscriptionOrganization/true.png";
 import "../assets/styles/SubscriptionOrganization.css";
 import { useNavigate } from "react-router-dom";
-
-const plans = [
-  { tier: "Tier 1", price: 999, users: "Up to 50 user account" },
-  { tier: "Tier 2", price: 1999, users: "Up to 100 user account" },
-  { tier: "Tier 3", price: 2999, users: "Up to 250 user account" },
-  { tier: "Tier 4", price: 3999, users: "Up to 500 user account" },
-  { tier: "Tier 5", price: 4999, users: "Up to 1000 user account" },
-];
+import { useDispatch, useSelector } from "react-redux";
+import { fetchPlans } from "../reduxAPI/reducer/plan"; 
 
 const SubscriptionOrganization = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const { plans, loading } = useSelector((state) => state.plan);
+
+  useEffect(() => {
+    dispatch(fetchPlans());
+  }, [dispatch]);
+
+  const organizationPlans = plans.filter((p) => p.type === "organization");
 
   return (
     <main
@@ -29,10 +32,10 @@ const SubscriptionOrganization = () => {
         aria-label="Subscription Selection Section"
       >
         <div className="text-center mt-4 mb-3 first">
-          <h1 className="fw-semibold">
+          <h1 className="fw-semibold" >
             Welcome to <span>Botox</span> Choose a Plan
           </h1>
-          <i className="description-1" >
+          <i className="description-1">
             Select a subscription to empower your team with advanced training
             tools.
           </i>
@@ -44,57 +47,77 @@ const SubscriptionOrganization = () => {
         </div>
 
         <div className="column-2" aria-label="Organization Plans">
-          {plans.map((plan, index) => (
-            <section
-              className="card shadow rounded-4"
-              key={index}
-              aria-label={`${plan.tier} Plan Details`}
-            >
-              <h2 className="fw-bold text-center">{plan.tier}</h2>
-              <div className="line" aria-hidden="true"></div>
-
-              <h3 className="fw-semibold my-2 text-center">
-                ${plan.price}
-                <span className="text-dark fw-normal">/</span>
-                <span className="text-dark fw-normal text">year</span>
-              </h3>
-
-              <ul className="list-unstyled mt-4" aria-label={`${plan.tier} Plan Features`}>
-                <li>
-                  <img src={icon} alt="" className="logo-1" aria-hidden="true" /> {plan.users}
-                </li>
-                <li>
-                  <img src={icon} alt="" className="logo-1" aria-hidden="true" /> Practice with 3D Anatomy
-                </li>
-                <li>
-                  <img src={icon} alt="" className="logo-1" aria-hidden="true" /> Assessment and exam tool
-                </li>
-                <li>
-                  <img src={icon} alt="" className="logo-1" aria-hidden="true" /> Master Admin Panel
-                </li>
-              </ul>
-
-              <button
-                className="btn w-100"
-                aria-label={`Choose ${plan.tier} Plan`}
-                type="button"
-                onClick={() =>
-                  navigate("/payment", {
-                    state: {
-                      tier: plan.tier,
-                      price: plan.price,
-                      duration: "12 months",
-                      users: plan.users,
-                    },
-                  })
-                }
+          {loading ? (
+            <>
+            <div className="text-center py-5">
+              <p className="fw-semibold">Loading plans...</p>
+            </div>
+            </>
+          ) : organizationPlans.length > 0 ? (
+            organizationPlans.map((plan) => (
+              <section
+                className="card shadow rounded-4"
+                key={plan.id}
+                aria-label={`${plan.name} Plan Details`}
               >
-                Choose Plan
-              </button>
-            </section>
-          ))}
+                <h2 className="fw-bold text-center">{plan.name}</h2>
+                <div className="line" aria-hidden="true"></div>
+
+                <h3 className="fw-semibold my-2 text-center">
+                  ${parseFloat(plan.price).toFixed(0)}
+                  <span className="text-dark fw-normal">/</span>
+                  <span className="text-dark fw-normal text">year</span>
+                </h3>
+
+                <ul
+                  className="list-unstyled mt-4"
+                  aria-label={`${plan.name} Plan Features`}
+                >
+                  <li>
+                    <img src={icon} alt="" className="logo-1" />{" "}
+                    Up to {plan.total_accounts} user account
+                  </li>
+                  <li>
+                    <img src={icon} alt="" className="logo-1" /> Practice with
+                    3D Anatomy
+                  </li>
+                  <li>
+                    <img src={icon} alt="" className="logo-1" /> Assessment and
+                    exam tool
+                  </li>
+                  <li>
+                    <img src={icon} alt="" className="logo-1" /> Master Admin
+                    Panel
+                  </li>
+                </ul>
+
+                <button
+                  className="btn w-100"
+                  aria-label={`Choose ${plan.name} Plan`}
+                  type="button"
+                  onClick={() =>
+                    navigate("/payment", {
+                      state: {
+                        tier: plan.name,
+                        price: parseFloat(plan.price),
+                        duration: "12 months",
+                        users: `Up to ${plan.total_accounts} user account`,
+                      },
+                    })
+                  }
+                >
+                  Choose Plan
+                </button>
+              </section>
+            ))
+          ) : (
+            <div className="text-center py-5">
+              <p>No organization plans available.</p>
+            </div>
+          )}
         </div>
       </section>
+
       <div className="circle circle-1" aria-hidden="true"></div>
       <div className="circle circle-2" aria-hidden="true"></div>
       <div className="circle circle-3" aria-hidden="true"></div>

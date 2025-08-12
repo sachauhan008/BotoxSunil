@@ -28,7 +28,6 @@ const authSlice = createSlice({
 export const { setToken, setLoading } = authSlice.actions;
 export default authSlice.reducer;
 
-
 export const loginUser = (data, navigate) => {
   return async (dispatch) => {
     try {
@@ -39,14 +38,16 @@ export const loginUser = (data, navigate) => {
         data
       );
 
-      const {  token } = response.data.data;
+      const { token } = response.data.data;
+      const { user } = response.data.data;
+      setLocalItem("role", user.role);
       const successMessage = response.data.message;
 
       dispatch(setToken(token));
       setLocalItem("token", token);
 
-      showToast(successMessage, 1); 
-      navigate("/training-module");
+      showToast(successMessage, 1);
+      navigate("/training-module"); 
     } catch (error) {
       showToast(getErrorMessage(error), 0);
     } finally {
@@ -65,7 +66,7 @@ export const registerOrganizationUser = (formData, navigate) => {
         formData
       );
 
-      const {  token } = response.data.data;
+      const { token } = response.data.data;
       const successMessage = response.data.message;
 
       dispatch(setToken(token));
@@ -139,5 +140,3 @@ export const logoutUser = (navigate) => {
     }
   };
 };
-
-
