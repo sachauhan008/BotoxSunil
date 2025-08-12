@@ -16,6 +16,7 @@ import PublicRoute from "../components/layout/PublicRoute";
 import PrivateLayout from "../components/layout/PrivateLayout";
 import RoleProtectedRoute from "../components/layout/RoleProtectedRoute";
 import Spinner from "../components/Spinner";
+import PageNotAvailable from "../pages/PageNotAvailable";
 
 const Login = lazy(() => import("../pages/Login"));
 const StudentCreateAccount = lazy(() => import("../pages/StudentCreateAccount"));
@@ -58,6 +59,7 @@ function Container() {
                   <Route path="/payment-history" element={<PaymentHistory />} />
                   <Route path="/start-new-attempt" element={<StartNewAttempt />} />
                 </Route>
+                <Route path="*" element={<PageNotAvailable />} />
               </Routes>
             </Suspense>
           </ScreenCheckWrapper>
